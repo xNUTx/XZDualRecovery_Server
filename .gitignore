@@ -161,6 +161,9 @@ Backup*/
 UpgradeLog*.XML
 UpgradeLog*.htm
 
+# RSA Keys
+*.pem
+
 # SQL Server files
 App_Data/*.mdf
 App_Data/*.ldf
