@@ -1,0 +1,166 @@
+<?php
+
+$session_title = new Zend_Session_Namespace('title');
+$session_msg = new Zend_Session_Namespace('message');
+$session = new Zend_Session_Namespace('user');
+$action = "index";
+if (Zend_Registry::isRegistered('visibleaction')) {
+    $action = Zend_Registry::get('visibleaction');
+}
+$controller = "index";
+if (Zend_Registry::isRegistered('visiblecontroller')) {
+	$controller = Zend_Registry::get('visiblecontroller');
+}
+echo $this->doctype();
+?>
+<html>
+	<head>
+		
+<?php
+	echo $this->headMeta()->setIndent('		') . "\n";
+	echo $this->headTitle()->setIndent('		') . "\n";
+	echo $this->headScript()->setIndent('		') . "\n";
+	echo $this->headLink()->setIndent('		') . "\n";
+?>
+	</head>
+	<body id="body">
+	<div id="viewport" class="viewport">
+		<div class="siteheader" id="siteheader">
+			<div class="pageheader" id="pageheader">
+				<table class="head">
+					<tr class="head">
+					    <td>
+                            <div id="home" class="menu home<?php echo ($controller == "index")?(" highlight"):(""); ?>" onClick="window.location='/';" onMouseOut="$(this).removeClassName('hoverhighlight');" onMouseOver="$(this).addClassName('hoverhighlight');">Home</div>
+    					    <div id="downloads" class="menu downloads<?php echo ($controller == "downloads")?(" highlight"):(""); ?>" onClick="window.location='/downloads';" onMouseOut="$(this).removeClassName('hoverhighlight');" onMouseOver="$(this).addClassName('hoverhighlight');">Downloads</div>
+        				</td>
+					</tr>
+				</table>
+				<table class="menu">
+					<tr class="menu">
+<?php 
+    echo "<td>\n";
+    if ($controller == "index") {
+        $active = ($action == "index")?(" activesub"):("");
+        echo "                            <div class=\"submenu" . $active . "\" onClick=\"window.location='/';\">Main</div>\n";
+	    $active = ($action == "about")?(" activesub"):("");
+        echo "                            <div class=\"submenu" . $active . "\" onClick=\"window.location='/about';\">About</div>\n";
+	    $active = ($action == "login")?(" activesub"):("");
+        echo "                            <div class=\"submenu" . $active . "\" onClick=\"window.location='/userlogin';\">Login</div>\n";
+    }
+    if ($controller == "downloads") {
+        $active = ($action == "index")?(" activesub"):("");
+		echo "                            <div class=\"submenu" . $active . "\" onClick=\"window.location='/shipment';\">Main</div>\n";
+		$active = ($action == "downloads")?(" activesub"):("");
+        echo "                            <div class=\"submenu" . $active . "\" onClick=\"window.location='/downloads';\">View Categories</div>\n";
+        $active = ($action == "upload")?(" activesub"):("");
+        echo "                            <div class=\"submenu" . $active . "\" onClick=\"window.location='/upload';\">Upload</div>\n";
+    }
+    echo "</td>\n";
+    
+?>
+						<td class="filler">&nbsp;</td>
+						<td class="signoff" onClick="window.location='/logout';">Sign Out</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<?php
+if (Zend_Registry::get('cookies') === false) {
+
+	echo "		<div class=\"nocookiewarning\" id=\"cookiewarn\">Your browser does not accept cookies, this website needs them to work correctly!</div>\n";
+	
+}
+?>
+		<div id="dynamic" class="dynamic">
+			
+<?php
+	if ($session_msg->message !== false && $session_msg->message != "") {
+?>
+			<div class="sitemessage">
+				<?php echo $session_msg->message; ?>
+			</div>
+<?php
+		$session_msg->message = false;
+	}
+?>		
+			
+			<div class="start">
+				
+				<?php echo $this->layout()->content; ?>
+				
+			</div>
+
+		</div>
+		
+	</div>
+	
+<?php if (APPLICATION_ENV == "development") {?>		
+		<div class="debug">
+			<img src="/images/debug.jpg" width="100%" onClick="showDialog('debugtitle', 'debugcontent');">
+		</div>
+		<div style="display: none;" id="debugtitle">DEBUGGING INFO:</div>
+		<div style="display: none;" id="debugcontent">
+<?php
+                
+				$session = new Zend_Session_Namespace('user');
+				$frontController = Zend_Controller_Front::getInstance();
+				echo "UserParams:<br>";
+				var_dump($frontController->getRequest()->getUserParams());
+				echo "Session:<br>";
+				var_dump($session->user);
+				echo "Debug:<br>";
+				var_dump($this->layout()->debug);
+				
+?>
+		</div>
+<?php } ?>
+		<div class="dialog" id="dialog" style="display: none;">
+			<table class="head">
+				<tr>
+					<td id="dialogtitle">
+						Dialog
+					</td>
+					<td style="width: 24px;" onClick="hideDialog('dialog');">
+						<img src="/images/icons/close.png" border="0">
+					</td>
+				</tr>
+			</table>
+			<div class="dialogcontent" id="dialogcontent">
+				Dialog text
+			</div>
+			<table class="foot">
+				<tr>
+					<td>
+						&nbsp;
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div class="hoverbox" id="hoverbox">
+			<div class="hoverboxhead" id="hoverboxhead">
+				<img src="/images/icons/close.png" border="0" id="hoverclose">
+			</div>
+			<div class="hoverboxcontent" id="hoverboxcontent">
+				&nbsp;
+			</div>
+		</div>
+
+<?php 
+	echo "		<script type=\"text/javascript\">\n";
+	echo "			document.observe('dom:loaded', function(){\n";
+	echo "				if (document.cookie.indexOf('Switch_DCxs')==-1) { $('cookiewarn').setStyle({ display: 'block' }); }\n";
+	echo "				// get viewport's width and height\n";
+	echo "				winSize = getWindowSize();\n";
+//	echo "				// get the siteheader height and append a margin\n";
+//	echo "				headSize = $('siteheader').getHeight();\n";
+//	echo "				// set the starting point for the hoverbox\n";
+//	echo "				$('hoverbox').setStyle({ top: (headSize+20)+'px' });\n";
+	echo "			});\n";
+	echo "			Event.observe(document.onresize ? document : window, 'resize', function() {\n";
+	echo "				// get viewport's width and height\n";
+	echo "				winSize = getWindowSize();\n";
+	echo "			});\n";
+	echo "		</script>\n";
+?>	
+	</body>
+</html>

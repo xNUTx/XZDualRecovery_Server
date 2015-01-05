@@ -1,0 +1,96 @@
+<table style="width: 960px;">
+	<tr>
+		<td style="width: 110px; vertical-align: top;">
+
+			<table class="itemlist" style="width: 110px;">
+				<tr>
+					<td class="info" style="width: 20px; padding: 0px; margin: 0px;"><input type="checkbox" onClick="checkAll();"></td>
+					<th class="xsid" style="width: 80px; padding: 0px; margin: 0px;">col 1</th>
+					<td class="info" style="width: 10px; padding: 0px; margin: 0px;">&nbsp;</td>
+				</tr>
+			<?php for($i = 1; $i < 20; $i++) {
+				echo "	<tr>\n";
+				echo "		<td class=\"info\" style=\"padding: 0px; margin: 0px;\"><input type=\"checkbox\" id=\"boxed\" name=\"boxed[]\" value=\"" . $i . "\"></td>\n";
+			//	echo "		<td class=\"xsid\" style=\"padding: 0px; margin: 0px;\" onClick=\"editInHover( 'row" . $i . "', 'hoverbox', '/index/edit/dinges/blablavla" . $i . "');\" onMouseOver=\"expandOnHover( 'row" . $i . "', 'hoverbox', '/index/load/dinges/blablavla" . $i . "', '850', '700');\" onMouseOut=\"cancelExpand( 'row". $i . "', 'hoverbox' );\">row " . $i ." </td>\n";
+				echo "		<td class=\"xsid\" style=\"padding: 0px; margin: 0px;\" onClick=\"hideHover( 'hoverbox' ); window.location = '/index/edit/edit/" . $i . "';\" onMouseOver=\"expandOnHover( 'row" . $i . "', 'hoverbox', '/index/load/dinges/blablavla" . $i . "', '850', '700');\" onMouseOut=\"cancelExpand( 'row". $i . "', 'hoverbox' );\">row " . $i ." </td>\n";
+				$showarrow = ($this->showing == $i)?(" stickyarrowleft"):("");
+				echo "		<td id=\"row" . $i . "\" class=\"arrow" . $showarrow . "\" style=\"padding: 0px; margin: 0px;\">&nbsp;</td>\n";
+				echo "	</tr>\n";
+			}
+			?>
+			</table>
+
+		</td>
+		<td style="width: 850px; vertical-align: top; background: white; border: 1px solid lightgrey;">
+			<div style="position: relative;	left: 0px;	top: 0px;">
+				<div style="position: relative;	left: 0px;	top: 0px;">
+					<form method="POST" action="/" name="bal" id="bal">
+					
+					<input type="radio" name="radz[]" id="radz-1" value="WAARDE1" /><label for="radz-1">WAARDE1</label><br />
+					<input type="radio" name="radz[]" id="radz-2" value="WAARDE2" /><label for="radz-2">WAARDE2</label><br />
+					<br />
+					<input type="text" name="textbox" id="textbox" value="Lorem ipsum dolor sit amet, consectetur adipiscing elit." /><br />
+					<br />
+					<input type="password" name="password" id="password" value="Nulla vulputate molestie enim, eu sagittis lectus volutpat nec." /><br />
+					<br />
+					<input type="checkbox" name="checkbox1[]" id="checkbox1" value="1" /><label for="checkbox1">1</label><br />
+					<input type="checkbox" name="checkbox2[]" id="checkbox2" value="2" /><label for="checkbox2">2</label><br />
+					<input type="checkbox" name="checkbox3[]" id="checkbox3" value="3" /><label for="checkbox3">3</label><br />
+					<input type="checkbox" name="checkbox4[]" id="checkbox4" value="4" /><label for="checkbox4">4</label><br />
+					<br />
+					<textarea rows="4" cols="60" name="textarea1" id="textarea1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vulputate molestie enim, eu sagittis lectus volutpat nec. Duis pellentesque massa viverra tortor accumsan accumsan. Donec nec arcu a est mattis luctus a at lectus. Quisque laoreet, ipsum a varius malesuada, nisl diam gravida mi, in congue ante est ac eros. Cras gravida nulla ac eros semper ultrices. Donec non odio nisi, non condimentum dolor. Curabitur fermentum, massa euismod pretium lacinia, sapien augue ornare eros, quis rutrum risus risus sit amet sem. Vestibulum vel semper felis. Praesent volutpat, ipsum nec consectetur bibendum, lacus ante fermentum leo, sit amet ullamcorper enim leo vitae nibh. Suspendisse potenti. Proin vel molestie enim. Praesent imperdiet gravida mollis. Nunc interdum, dolor a rutrum sodales, tortor lacus blandit sapien, vel varius libero eros ac dui. Donec imperdiet egestas sollicitudin. Nam et velit eros. </textarea><br />
+					<br />
+					<input type="file" name="fileselect" id="fileselect" /><br />
+					
+					<input type="radio" name="radz[]" id="radz-1" value="WAARDE1" /><label for="radz-1">WAARDE1</label><br />
+					<input type="radio" name="radz[]" id="radz-2" value="WAARDE2" /><label for="radz-2">WAARDE2</label><br />
+					<br />
+					<input type="text" name="textbox" id="textbox" value="Lorem ipsum dolor sit amet, consectetur adipiscing elit." /><br />
+					<br />
+					<input type="password" name="password" id="password" value="Nulla vulputate molestie enim, eu sagittis lectus volutpat nec." /><br />
+					<br />
+					<input type="checkbox" name="checkbox1[]" id="checkbox1" value="1" /><label for="checkbox1">1</label><br />
+					<input type="checkbox" name="checkbox2[]" id="checkbox2" value="2" /><label for="checkbox2">2</label><br />
+					<input type="checkbox" name="checkbox3[]" id="checkbox3" value="3" /><label for="checkbox3">3</label><br />
+					<input type="checkbox" name="checkbox4[]" id="checkbox4" value="4" /><label for="checkbox4">4</label><br />
+					<br />
+					<textarea rows="4" cols="60" name="textarea1" id="textarea1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vulputate molestie enim, eu sagittis lectus volutpat nec. Duis pellentesque massa viverra tortor accumsan accumsan. Donec nec arcu a est mattis luctus a at lectus. Quisque laoreet, ipsum a varius malesuada, nisl diam gravida mi, in congue ante est ac eros. Cras gravida nulla ac eros semper ultrices. Donec non odio nisi, non condimentum dolor. Curabitur fermentum, massa euismod pretium lacinia, sapien augue ornare eros, quis rutrum risus risus sit amet sem. Vestibulum vel semper felis. Praesent volutpat, ipsum nec consectetur bibendum, lacus ante fermentum leo, sit amet ullamcorper enim leo vitae nibh. Suspendisse potenti. Proin vel molestie enim. Praesent imperdiet gravida mollis. Nunc interdum, dolor a rutrum sodales, tortor lacus blandit sapien, vel varius libero eros ac dui. Donec imperdiet egestas sollicitudin. Nam et velit eros. </textarea><br />
+					<br />
+					<input type="file" name="fileselect" id="fileselect" /><br />
+					
+					<input type="radio" name="radz[]" id="radz-1" value="WAARDE1" /><label for="radz-1">WAARDE1</label><br />
+					<input type="radio" name="radz[]" id="radz-2" value="WAARDE2" /><label for="radz-2">WAARDE2</label><br />
+					<br />
+					<input type="text" name="textbox" id="textbox" value="Lorem ipsum dolor sit amet, consectetur adipiscing elit." /><br />
+					<br />
+					<input type="password" name="password" id="password" value="Nulla vulputate molestie enim, eu sagittis lectus volutpat nec." /><br />
+					<br />
+					<input type="checkbox" name="checkbox1[]" id="checkbox1" value="1" /><label for="checkbox1">1</label><br />
+					<input type="checkbox" name="checkbox2[]" id="checkbox2" value="2" /><label for="checkbox2">2</label><br />
+					<input type="checkbox" name="checkbox3[]" id="checkbox3" value="3" /><label for="checkbox3">3</label><br />
+					<input type="checkbox" name="checkbox4[]" id="checkbox4" value="4" /><label for="checkbox4">4</label><br />
+					<br />
+					<textarea rows="4" cols="60" name="textarea1" id="textarea1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vulputate molestie enim, eu sagittis lectus volutpat nec. Duis pellentesque massa viverra tortor accumsan accumsan. Donec nec arcu a est mattis luctus a at lectus. Quisque laoreet, ipsum a varius malesuada, nisl diam gravida mi, in congue ante est ac eros. Cras gravida nulla ac eros semper ultrices. Donec non odio nisi, non condimentum dolor. Curabitur fermentum, massa euismod pretium lacinia, sapien augue ornare eros, quis rutrum risus risus sit amet sem. Vestibulum vel semper felis. Praesent volutpat, ipsum nec consectetur bibendum, lacus ante fermentum leo, sit amet ullamcorper enim leo vitae nibh. Suspendisse potenti. Proin vel molestie enim. Praesent imperdiet gravida mollis. Nunc interdum, dolor a rutrum sodales, tortor lacus blandit sapien, vel varius libero eros ac dui. Donec imperdiet egestas sollicitudin. Nam et velit eros. </textarea><br />
+					<br />
+					<input type="file" name="fileselect" id="fileselect" /><br />
+					
+					<input type="button" name="submit" id="submit" value="Save" /> or <input type="button" name="return" id="return" value="Cancel" onClick="window.history.back();" /><br />
+					
+					</form>
+				</div>
+				<div style="position: absolute;	right: 0px;	top: -22px;">
+					<img src="/images/icons/close.png" border="0" onClick="window.history.back();">
+				</div>
+			</div>
+		</td>
+	</tr>
+</table>
+
+
+<script type="text/javascript">
+
+$("submit").observe('click', function() {
+	window.submitForm( $("bal"), '/index/save/' );
+});
+
+</script>

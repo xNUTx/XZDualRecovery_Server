@@ -1,0 +1,293 @@
+@CHARSET "ISO-8859-1";
+
+html {
+	overflow: hidden;
+}
+
+body {
+	overflow: hidden;
+	background-color: white;
+	font-family: verdana,sans-serif;
+	font-size: 12px;
+}
+
+table {
+	empty-cells: show;
+}
+
+a {
+    color: #006699;
+	text-decoration: none;
+}
+
+.search {
+	vertical-align: top;
+	empty-cells: show;
+	font-size: 12px;
+	width: auto;
+}
+
+.search .edit {
+	text-align: center;
+	cursor: pointer;
+}
+
+.search .row {
+	vertical-align: top;
+}
+
+.search .rowspan {
+	vertical-align: middle;
+	text-align: center;
+}
+
+.search .field {
+	border: 1px solid grey;
+	line-height: 24px;
+	vertical-align: middle;
+	width: 360px;
+	background-color: white;
+}
+
+.search .widefield {
+	border: 1px solid grey;
+	line-height: 24px;
+	vertical-align: middle;
+	width: 100%;
+	min-width: 300px;
+	max-width: 480px;
+}
+
+.search .label, .search label {
+	width: 120px;
+	font-size: 12px;
+	vertical-align: top;
+}
+
+.search .field input, .search .field select  {
+	font-size: 12px;
+	color: black;
+	background: transparent;
+	padding: 0px;
+	margin: 0px;
+	border: none;
+	width: 360px;
+}
+
+.search .widefield input, .search .widefield select  {
+	font-size: 12px;
+	color: black;
+	background: transparent;
+	padding: 0px;
+	margin: 0px;
+	border: none;
+}
+
+.search .widefield select  {
+	width: 100%;
+}
+
+.search .widefield input  {
+	width: 100%;
+}
+
+.search input[type=text] {
+	height: 24px;
+	border-bottom: 1px solid grey;
+}
+
+.search select[MULTIPLE] {
+	height: 144px;
+}
+
+.search option {
+	padding: 3px;
+}
+
+.search input[type=submit], .fieldset input[type=reset]  {
+	width: 100px;
+	height: 30px;
+	color: #0098CC;
+	font-size: 12px;
+	font-weight: bold;
+	text-transform: uppercase;
+	border: 1px solid grey;
+	background-color: white;
+	margin-top: 5px;
+}
+
+div.dialog {
+	position: fixed;
+	width: 390px;
+	height: 267px;
+	z-index: 999;
+	background-color: lightgrey;
+	border: 1px solid #000000;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+}
+
+div.dialog table.head {
+	background-color: grey;
+	border-bottom: 1px solid #000000;
+	width: 100%;
+	color: white;
+	-moz-border-radius: 10px 10px 0px 0px;
+	border-radius: 10px 10px 0px 0px;
+	margin: 0px;
+	padding: 0px;
+}
+
+div.dialog table.head td {
+	font-weight: bold;
+	margin: 0px;
+	padding: 0px;
+	padding: 0px 10px;
+	line-height: 24px;
+}
+
+div.dialog table.head td img {
+	margin: 0px;
+	padding: 0px;
+	vertical-align: middle;
+}
+
+div.dialog div.dialogcontent {
+	min-width: 180px;
+	max-width: 380px;
+	width: 96%;
+	height: 222px;
+	padding: 0px 10px;
+	overflow: auto;
+}
+
+div.dialog table.foot {
+	background-color: grey;
+	border-top: 1px solid #000000;
+	width: 100%;
+	-moz-border-radius: 0px 0px 10px 10px;
+	border-radius: 0px 0px 10px 10px;
+	margin: 0px;
+	padding: 0px;
+}
+
+div.dialog table.foot td {
+	margin: 0px;
+	padding: 0px;
+	line-height: 10px;
+	font-size: 1px;
+}
+
+select.replyTo {
+	width: 100%;
+	height: 26px;
+	border: none;
+	margin: 0px;
+	background: transparent;
+	line-height: normal;
+    padding: 3px 0px;
+	vertical-align: middle;
+}
+
+/* Tooltips CSS */
+label.tooltip {
+	text-decoration: inherit;
+	text-align: left;
+	font-weight: inherit;
+	cursor: inherit;
+	border-bottom: 1px dotted grey;
+}
+
+label.bluetip {
+	text-decoration: inherit;
+	text-align: left;
+	font-weight: inherit;
+	cursor: inherit;
+	border-bottom: 0px dotted grey;
+	color: #006699;
+}
+
+label.nounderline {
+	border: none;
+}
+
+label.tooltip:hover {
+	position: relative;
+	font-style: inherit;
+}
+
+label.tooltip span {
+	display: none;
+	width: auto;
+}
+
+/* Right upper corner is default */
+label.tooltip:hover span {
+	display: block;
+	position: absolute;
+	bottom: 18px;
+	left: 15px;
+	/* formatting only styles */
+	white-space: wrap;
+	width: 350px;
+	height: auto;
+	padding: 3px;
+	margin: 7px;
+	z-index: 100;
+	background-color: #FFFFC7;
+	border: 1px dotted #000000;
+	opacity: 0.9;
+	color: black;
+	/* end formatting */
+}
+
+label.tooltip:hover span.centerdown {
+	display: block;
+	position: absolute;
+	top: 8px;
+	bottom: auto;
+	left: -150px;
+	right: auto;
+}
+
+label.tooltip:hover span.centerup {
+	display: block;
+	position: absolute;
+	top: auto;
+	bottom: 15px;
+	left: -150px;
+	right: auto;
+}
+
+label.tooltip:hover span.rightdown {
+	display: block;
+	position: absolute;
+	top: 8px;
+	bottom: auto;
+	left: 0px;
+	right: auto;
+}
+
+label.tooltip:hover span.leftdown {
+	display: block;
+	position: absolute;
+	top: 8px;
+	bottom: auto;
+	left: auto;
+	right: 0px;
+}
+
+label.tooltip:hover span.leftup {
+	display: block;
+	position: absolute;
+	top: auto;
+	bottom: 15px;
+	left: auto;
+	right: 0px;
+}
+
+label.tooltip:hover span ul {
+	margin-left: 20px;
+}
+
+/* Einde Tooltips CSS */

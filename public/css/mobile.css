@@ -1,0 +1,402 @@
+@CHARSET "ISO-8859-1";
+
+/*
+ * Start of Basic Markup
+ */
+
+div.viewport {
+	margin-bottom: 0px;
+}
+
+div.dynamic {
+	left: 0px;
+	right: 0px;
+	margin: 0px 5px;
+}
+
+div.requestform {
+	width: 100%;
+	min-width: 300px;
+	max-width: 480px;
+}
+
+div.floatform {
+	padding: 0px;
+	width: 100%;
+	min-width: 300px;
+	max-width: 480px;
+}
+
+div.formcontent {
+	padding: 0px;
+	width: 100%;
+	min-width: 300px;
+	max-width: 480px;
+}
+
+div.touchmenu {
+	text-align: center;
+	margin-top: 0px;
+}
+
+table.subforms {
+	width: 100%;
+	min-width: 300px;
+	max-width: 480px;
+}
+
+div.start {
+	width: 100%;
+	text-align: center;
+}
+
+div.welcome {
+	width: 100%;
+	max-width: 100%;
+	text-align: left;
+	padding: 0px;
+}
+
+/* Right upper corner is default */
+label.tooltip:hover span {
+	display: block;
+	position: absolute;
+	bottom: 18px;
+	left: 0px;
+	/* formatting only styles */
+	white-space: wrap;
+	line-height: 20px;
+	vertical-align: top;
+	width: 275px;
+	height: auto;
+	padding: 3px;
+	margin: 0px;
+	z-index: 100;
+	background-color: #FFFFC7;
+	border: 1px dotted #000000;
+	opacity: 0.9;
+	/* end formatting */
+}
+
+label.tooltip:hover span.centerdown {
+	display: block;
+	position: relative;
+	top: auto;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+}
+
+label.tooltip:hover span.centerup {
+	display: block;
+	position: relative;
+	top: auto;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+}
+
+label.tooltip:hover span.rightdown {
+	display: block;
+	position: relative;
+	top: auto;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+}
+
+label.tooltip:hover span.leftdown {
+	display: block;
+	position: relative;
+	top: auto;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+}
+
+label.tooltip:hover span.leftup {
+	display: block;
+	position: relative;
+	top: auto;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+}
+
+label.tooltip:hover span ul {
+	margin-left: 20px;
+}
+
+/* Einde Tooltips CSS */
+
+table.itemlist {
+	min-width: 310px;
+	max-width: 960px;
+	width: 100%;
+}
+
+table.itemlist tr {
+	min-height: 22px;
+	max-height: 88px;
+	height: auto;
+}
+
+table.itemlist th {
+	border-bottom: 1px solid lightgrey;
+	vertical-align: top;
+}
+
+table.itemlist td {
+	border-bottom: 1px solid lightgrey;
+	vertical-align: bottom;
+}
+
+table.lastten th.xsid, table.lastten td.xsid {
+	width: 60px;
+}
+
+table.itemlist td.archive {
+	border: none;
+}
+
+table.lastten tr.fingers {
+	height: 46px;
+	line-height: 44px;
+	vertical-align: middle;
+}
+
+table.itemlist div {
+	overflow: hidden;
+	margin: 0px;
+}
+
+div.left {
+	text-align: left;
+}
+
+div.center {
+	text-align: center;
+}
+
+div.right {
+	text-align: right;
+}
+
+div.detailwrap {
+	min-width: 300px;
+	width: auto;
+	max-width: 960px;
+	clear: both;
+}
+
+div.label {
+	float: left;
+	font-weight: bold;
+	font-size: 6px;
+	text-transform: uppercase;
+	color: lightgrey;
+	width: 45px;
+	height: 22px;
+	background: tansparent;
+	padding-left: 4px;
+}
+
+div.content {
+	float: left;
+	width: 175px;
+	height: 22px;
+	padding-left: 4px;
+	white-space: nowrap;
+}
+
+div.xsid {
+	float: left;
+	width: 110px;
+	height: 22px;
+}
+
+div.xsid div.content {
+	width: 55px;
+}
+
+div.name {
+	float: left;
+	width: 230px;
+	height: 22px;
+}
+
+div.longname {
+	float: right;
+	width: 300px;
+	height: 22px;
+}
+
+div.status {
+	float: right;
+	width: 70px;
+	height: 22px;
+}
+
+div.extra {
+	float: right;
+	width: 55px;
+	height: 22px;
+}
+
+div.eta {
+	float: right;
+	width: 75px;
+	height: 22px;
+}
+
+div.checkin {
+	float: right;
+	width: 75px;
+	height: 22px;
+}
+
+div.fullcheckin {
+	float: right;
+	width: 120px;
+	height: 22px;
+}
+
+div.token {
+	float: right;
+	width: 55px;
+	height: 22px;
+}
+
+div.type {
+	float: right;
+	width: 50px;
+	height: 22px;
+}
+
+div.received {
+	float: right;
+	width: 120px;
+	height: 22px;
+}
+
+div.pickup {
+	float: right;
+	width: 90px;
+	height: 22px;
+}
+
+div.idtype {
+	float: right;
+	width: 60px;
+	height: 22px;
+}
+
+div.idnumber {
+	float: right;
+	width: 120px;
+	height: 22px;
+}
+
+div.fullcheckin {
+	float: right;
+	width: 120px;
+	height: 22px;
+}
+
+div.received {
+	float: right;
+	width: 120px;
+	height: 22px;
+}
+
+div.info {
+	float: right;
+	cursor: pointer;
+	width: 20px;
+	height: 22px;
+}
+
+div.edit {
+	float: right;
+	cursor: pointer;
+	width: 20px;
+	height: 22px;
+}
+
+div.icon {
+	float: right;
+	cursor: pointer;
+	width: 20px;
+	height: 22px;
+}
+
+div.save {
+	float: right;
+	cursor: pointer;
+	width: 72px;
+	height: 22px;
+}
+
+div.moreinfo {
+	float: right;
+	cursor: pointer;
+	width: 100px;
+	height: 22px;
+}
+
+div.token select {
+	border: 1px solid lightgrey;
+	background: transparent;
+	width: 55px;
+	height: 22px;
+	height: 22px;
+}
+
+div.pickup select {
+	border: 1px solid lightgrey;
+	background: transparent;
+	width: 90px;
+	height: 22px;
+	height: 22px;
+}
+
+div.idtype select {
+	border: 1px solid lightgrey;
+	background: transparent;
+	width: 75px;
+	height: 22px;
+	height: 22px;
+}
+
+
+div.idnumber input[type=text] {
+	border: 1px solid lightgrey;
+	width: 120px;
+	height: 20px;
+}
+
+div.save input[type=submit] {
+	background-color: #0098CC;
+	color: white;
+	width: 72px;
+	height: 22px;
+	border: 0px;
+	font-weight: bold;
+	font-size: 12px;
+}
+
+button.detailsbutton {
+	width: 100px;
+	height: 22px;
+	background-color: #0098CC;
+	color: white;
+	border: 0px;
+	padding: 0px;
+	margin: 0px;
+	font-size: 12px;
+	font-weight: bold;
+	text-transform: uppercase;
+	line-height: 22px;
+	vertical-align: middle;
+	cursor: pointer;
+}

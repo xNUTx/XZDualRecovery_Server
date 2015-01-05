@@ -1,0 +1,16 @@
+@CHARSET "ISO-8859-1";
+
+div.debug {
+	display: block;
+}
+
+.highlight {
+	background: url('/images/icons/pijltje.png');
+	background-repeat: no-repeat;
+	background-position: 50% 100%;
+	background-color: transparent;
+}
+
+.hoverhighlight {
+	background-color: #33CCFF;
+}

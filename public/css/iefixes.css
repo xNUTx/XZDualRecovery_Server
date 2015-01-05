@@ -1,0 +1,9 @@
+@CHARSET "UTF-8";
+
+.ticketfield input, .ticketfield select, .ticketfield textarea  {
+	background-color: transparent;
+}
+
+.ticketfield input[DISABLED], .ticketfield select[DISABLED], .ticketfield textarea[DISABLED]  {
+	background-color: transparent;
+}
