@@ -1,0 +1,24 @@
+<table class="itemlist">
+	<tr>
+		<td class="info" style="width: 20px; padding: 0px; margin: 0px;"><input type="checkbox" onClick="checkAll();"></td>
+		<th class="xsid" style="width: 80px; padding: 0px; margin: 0px;">col 1</th>
+		<td class="info" style="width: 10px; padding: 0px; margin: 0px;">&nbsp;</td>
+		<th>col 3</th>
+		<th>col 4</th>
+		<th>col 5</th>
+		<th>col 6</th>
+	</tr>
+<?php for($i = 1; $i < 20; $i++) {
+	echo "	<tr>\n";
+	echo "		<td class=\"info\" style=\"padding: 0px; margin: 0px;\"><input type=\"checkbox\" id=\"boxed\" name=\"boxed[]\" value=\"" . $i . "\"></td>\n";
+//	echo "		<td class=\"xsid\" style=\"padding: 0px; margin: 0px;\" onClick=\"editInHover( 'row" . $i . "', 'hoverbox', '/index/edit/dinges/blablavla" . $i . "');\" onMouseOver=\"expandOnHover( 'row" . $i . "', 'hoverbox', '/index/load/dinges/blablavla" . $i . "', '850', '700');\" onMouseOut=\"cancelExpand( 'row". $i . "', 'hoverbox' );\">row " . $i ." </td>\n";
+	echo "		<td class=\"xsid\" style=\"padding: 0px; margin: 0px;\" onClick=\"window.location = '/index/edit/edit/" . $i . "';\" onMouseOver=\"expandOnHover( 'row" . $i . "', 'hoverbox', '/index/load/dinges/blablavla" . $i . "', '850', '700');\" onMouseOut=\"cancelExpand( 'row". $i . "', 'hoverbox' );\">row " . $i ." </td>\n";
+	echo "		<td id=\"row" . $i . "\" class=\"arrow\" style=\"padding: 0px; margin: 0px;\">&nbsp;</td>\n";
+	echo "		<td>bla</td>\n";
+	echo "		<td>bla</td>\n";
+	echo "		<td>bla</td>\n";
+	echo "		<td>bla</td>\n";
+	echo "	</tr>\n";
+}
+?>
+</table>

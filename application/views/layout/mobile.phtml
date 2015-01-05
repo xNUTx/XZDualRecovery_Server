@@ -1,0 +1,290 @@
+<?php
+
+$session_title = new Zend_Session_Namespace('title');
+$session_msg = new Zend_Session_Namespace('message');
+$session = new Zend_Session_Namespace('user');
+echo $this->doctype();
+?>
+<html>
+	<head>
+		
+<?php
+	echo $this->headMeta()->setIndent('		') . "\n";
+	echo $this->headTitle()->setIndent('		') . "\n";
+	echo $this->headScript()->setIndent('		') . "\n";
+	echo $this->headLink()->setIndent('		') . "\n";
+?>
+	</head>
+	<body>
+	<div class="viewport">
+		<div class="siteheader">
+			<div class="pageheader">
+				<table class="head">
+					<tr class="head">
+						<td class="home" onClick="window.location='/';"><img src="/images/home.png" border="0"></td>
+						<td class="filler"></td>
+						<td class="logo"><img src="/images/switch.png" border="0"></td>
+					</tr>
+				</table>
+				<table class="menu">
+					<tr class="menu">
+						<td class="title"><?php echo $session_title->pagename; ?></td>
+						<td class="filler"></td>
+<?php
+if ($session->user !== false && is_numeric($session->user->id)) {
+?>
+						<td class="signoff" onClick="window.location='/logout';">Sign Out</td>
+<?php
+} else {
+?>
+						<td class="signoff"></td>
+<?php 
+}
+?>
+					</tr>
+				</table>
+			</div>
+		</div>
+			
+<?php
+if (Zend_Registry::get('cookies') === false) {
+
+	echo "		<div class=\"nocookiewarning\" id=\"cookiewarn\">Your browser does not accept cookies, this website needs them to work correctly!</div>\n";
+	
+}
+?>
+		<div class="dynamic">
+<?php
+if ($session->user !== false && ($session->user->dcxsrole == 4 || $session->user->dcxsrole == 5)) {
+?>
+			<div class="adminmenu">
+
+				<div class="smalltouchbutton" onClick="window.location='/';">
+					<div class="smallbuttoncontent">Dashboard</div>
+				</div>
+				
+				<div class="smalltouchbutton" onClick="window.location='/dcxsadmin/search/target/request';">
+					<div class="smallbuttoncontent">Register Access</div>
+				</div>
+				
+				<div class="smalltouchbutton" onClick="window.location='/dcxsadmin/shipment';">
+					<div class="smallbuttoncontent">Register Shipment</div>
+				</div>
+				
+				<div class="smalltouchbutton" onClick="window.location='/dcxsadmin/search/target/companies';">
+					<div class="smallbuttoncontent">Companies</div>
+				</div>
+				
+				<div class="smalltouchbutton" onClick="window.location='/dcxsadmin/search/target/contacts';">
+					<div class="smallbuttoncontent">Contacts</div>
+				</div>
+				
+				<div class="smalltouchbutton" onClick="window.location='/dcxsadmin/dcinfo';">
+					<div class="smallbuttoncontent">DC Info</div>
+				</div>
+				
+<?php
+	if ($session->user !== false && $session->user->dcxsrole == 5) {
+?>
+				<div class="smalltouchbutton" onClick="window.location='/dcxsadmin/search/target/whitelist';">
+					<div class="smallbuttoncontent">Whitelist</div>
+				</div>
+				
+				<div class="smalltouchbutton" onClick="window.location='/dcxsadmin/search/target/accounts';">
+					<div class="smallbuttoncontent">Accounts</div>
+				</div>
+				
+				<div class="smalltouchbutton" onClick="window.location='/dcxsadmin/xstokens';">
+					<div class="smallbuttoncontent">Access Tokens</div>
+				</div>
+<?php
+	}
+?>
+
+			</div>
+			
+<?php
+	if ($session_msg->message !== false && $session_msg->message != "") {
+?>
+			<div class="sitemessage">
+				<?php echo $session_msg->message; ?>
+			</div>
+<?php
+		$session_msg->message = false;
+	}
+?>		
+			
+			<div class="admin" id="admin">		
+				<?php echo $this->layout()->content; ?>
+			</div>
+			
+<?php
+	if (Zend_Registry::get('visibleaction') == "index" && $session->user !== false && $session->user->dcxsrole > 3) {
+?>
+			<script type="text/javascript">
+
+				document.observe("dom:loaded", function() {
+					setTimeout('window.location.reload()', '60000');
+				});
+				
+			</script>
+			
+<?php
+	}
+
+} else {
+
+	if ($session->user !== false && $session->user->dcxsrole == 3 && Zend_Registry::get('device') == 'computer' && Zend_Registry::get('visibleaction') != "index") {
+?>
+			<div class="adminmenu">
+				
+				<div class="smalltouchbutton" onClick="window.location='/request';">
+					<div class="smallbuttoncontent">Request Access</div>
+				</div>
+			
+				<div class="smalltouchbutton" onClick="window.location='/shipment';">
+					<div class="smallbuttoncontent">Register Shipment</div>
+				</div>
+			
+				<div class="smalltouchbutton" onClick="window.location='/dcxs/search/target/custcontacts';">
+					<div class="smallbuttoncontent">Manage Contacts</div>
+				</div>
+				
+<?php 
+		if (Zend_Registry::get('device') != 'computer') {
+?>
+				<div class="smalltouchbutton" onClick="warnUser('The archive page is not suited for use on very small mobile screens, continue?', '/dcxs/archive');">
+					<div class="smallbuttoncontent">Access Archive</div>
+				</div>
+<?php
+		} else {
+?>
+				<div class="smalltouchbutton" onClick="window.location='/dcxs/archive';">
+					<div class="smallbuttoncontent">Access Archive</div>
+				</div>
+<?php
+		}
+		
+		if (Zend_Registry::get('device') != 'computer') {
+?>
+				<div class="smalltouchbutton" onClick="warnUser('The archive page is not suited for use on very small mobile screens, continue?', '/dcxs/received');">
+					<div class="smallbuttoncontent">Shipment Archive</div>
+				</div>
+<?php
+		} else {
+?>
+				<div class="smalltouchbutton" onClick="window.location='/dcxs/received';">
+					<div class="smallbuttoncontent">Shipment Archive</div>
+				</div>
+<?php
+		}
+?>
+				<div class="smalltouchbutton" onClick="window.location='/dcxs/dcinfo';">
+					<div class="smallbuttoncontent">DC Info</div>
+				</div>
+				
+			</div>
+<?php
+	}
+	
+	if ($session_msg->message !== false && $session_msg->message != "") {
+?>
+			<div class="sitemessage">
+				<?php echo $session_msg->message; ?>
+			</div>
+<?php
+			$session_msg->message = false;
+	}
+?>		
+			<div class="start">
+				
+				<?php echo $this->layout()->content; ?>
+				
+			</div>
+<?php
+}
+
+if ($session->user !== false && is_numeric($session->user->id)) {
+?>
+			<div class="user">
+				You are currently logged in as <?php echo $session->user->fullname; ?><br>
+				<?php if ($session->user->dcxsrole > 3) { ?>
+				<a href="/resetpass">Change password</a>
+				<?php } else { ?>
+				<a href="/resetpass">Change password</a> | <a href="/notify">notification settings</a>
+				<?php } ?>
+			</div>
+<?php
+}
+?>			
+			<div style="height: 30px; width: 100%"></div>
+			<div id="ajaxdebug"></div>
+		</div>
+<?php if (APPLICATION_ENV == "development") {?>		
+		<div class="debug">
+			<img src="/images/debug.jpg" width="100%" onClick="showDialog('debugtitle', 'debugcontent');">
+		</div>
+		<div style="display: none;" id="debugtitle">DEBUGGING INFO:</div>
+		<div style="display: none;" id="debugcontent">
+<?php
+                
+				$session = new Zend_Session_Namespace('user');
+				$frontController = Zend_Controller_Front::getInstance();
+				echo "UserParams:<br>";
+				var_dump($frontController->getRequest()->getUserParams());
+				echo "Session:<br>";
+				var_dump($session->user);
+				echo "Debug:<br>";
+				var_dump($this->layout()->debug);
+				
+?>
+		</div>
+<?php } ?>
+		<div class="dialog" id="dialog">
+			<table class="head">
+				<tr>
+					<td id="dialogtitle">
+						CCC Dialog
+					</td>
+					<td style="width: 24px;" onClick="hideDialog('dialog');">
+						<img src="/images/icons/close.png" border="0">
+					</td>
+				</tr>
+			</table>
+			<div class="dialogcontent" id="dialogcontent">
+				Dialog text
+			</div>
+			<table class="foot">
+				<tr>
+					<td>
+						&nbsp;
+					</td>
+				</tr>
+			</table>
+		</div>
+<?php if (false) { ?>
+		<div style="display: none;" id="testtitle">Lorem Ipsum</div>
+		<div style="display: none;" id="testcontent">
+			<p>
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed varius ipsum sed turpis dignissim eu convallis turpis pellentesque. Vivamus felis tellus, porta a sagittis ac, pretium vitae nunc. Fusce quis libero in libero vehicula elementum at nec lectus. Etiam venenatis, mi non aliquet viverra, turpis enim faucibus velit, ut condimentum libero ipsum vitae nulla. Praesent id arcu ipsum, a pretium lectus. Quisque sit amet nulla magna. Duis velit sem, dapibus eu egestas eu, iaculis eu sapien. Vestibulum bibendum felis vel augue blandit et condimentum orci viverra. Donec sit amet nisi nec sapien tincidunt fermentum sed nec arcu.
+			</p>
+			<p>
+			Sed id dui nibh, eleifend dignissim mauris. Etiam sed eleifend ante. Quisque elit massa, pulvinar eget laoreet sed, sodales vitae est. Pellentesque vestibulum neque in justo gravida adipiscing. Quisque non magna lorem, et condimentum velit. Nulla facilisi. Vestibulum blandit fringilla nunc sit amet congue. Aenean condimentum nisl sed orci sodales interdum. Pellentesque odio mi, mollis vitae iaculis quis, pulvinar nec arcu. Phasellus sed accumsan risus. Aenean hendrerit condimentum egestas. Suspendisse metus mauris, varius non egestas ac, facilisis non ante. Sed eleifend volutpat varius.
+			</p>
+		</div>
+<?php } ?>
+	</div>
+<?php 
+	echo "		<script type=\"text/javascript\">\n";
+	echo "			document.observe('dom:loaded', function(){\n";
+	echo "				if (document.cookie.indexOf('Switch_DCxs')==-1) { $('cookiewarn').setStyle({ display: 'block' }); }\n";
+	echo "			});\n";
+//	echo "			$('cookiewarn').setStyle({ display: 'block' });\n";
+//	echo "			showDialog('testtitle', 'testcontent');\n";
+//	if (Zend_Registry::get('device') != 'computer') {
+//	    echo "alert('mobiele debiel gevonden!');\n";
+//	}
+	echo "		</script>\n";
+?>	
+	</body>
+</html>
